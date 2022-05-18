@@ -2,57 +2,50 @@
 
 /**
  * _printf - formatted output conversion and print data.
- * Authors: Martins Akhivbareme & Bolatito Alaba
  * @format: input string.
  *
  * Return: number of chars printed.
  */
-
 int _printf(const char *format, ...)
 {
-	va_list arg;
-	int i = 0, buff_count = 0;
+	unsigned int i = 0, len = 0, ibuf = 0;
+	va_list arguments;
+	int (*function)(va_list, char *, unsigned int);
 	char *buffer;
 
-	if (!format)
+	va_start(arguments, format), buffer = malloc(sizeof(char) * 1024);
+	if (!format || !buffer || (format[i] == '%' && !format[i + 1]))
 		return (-1);
-
-	buffer = malloc(sizeof(char) * 1024);
-	if (!buffer)
-	{
-		free(buffer);
-		return (-1);
-	}
-
-	va_start(arg, format);
-	while (format && format[i] != '\0')
+	if (!format[i])
+		return (0);
+	for (i = 0; format && format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
-			i++;
-			switch (format[i])
-			{
-			case 'c':
-				buff_count = parse_char(buffer, arg, buff_count), buff_count++;
-				break;
-			case 's':
-				buff_count = parse_string(buffer, arg, buff_count);
-				break;
-			case 'i':
-			case 'd':
-				buff_count = parse_int(buffer, arg, buff_count);
-				break;
-			default:
-				buffer[buff_count] = format[i], buff_count++;
+			if (format[i + 1] == '\0')
+			{	print_buf(buffer, ibuf), free(buffer), va_end(arguments);
+				return (-1);
 			}
+			else
+			{	function = get_print_func(format, i + 1);
+				if (function == NULL)
+				{
+					if (format[i + 1] == ' ' && !format[i + 2])
+						return (-1);
+					handl_buf(buffer, format[i], ibuf), len++, i--;
+				}
+				else
+				{
+					len += function(arguments, buffer, ibuf);
+					i += ev_print_func(format, i + 1);
+				}
+			} i++;
 		}
 		else
-			buffer[buff_count] = format[i], buff_count++;
-		i++;
+			handl_buf(buffer, format[i], ibuf), len++;
+		for (ibuf = len; ibuf > 1024; ibuf -= 1024)
+			;
 	}
-	buffer[buff_count] = '\0';
-	print_buff(buffer, buff_count);
-	va_end(arg);
-	free(buffer);
-	return (buff_count);
+	print_buf(buffer, ibuf), free(buffer), va_end(arguments);
+	return (len);
 }
