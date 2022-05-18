@@ -5,7 +5,6 @@
 /**
  * m_ain - Entry point
  * function named this way on purpose
- * Authors: Martins Akhivbareme & Bolatito Alaba
  *
  * Return: Always 0
  */
@@ -25,13 +24,13 @@ int m_ain(void)
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
 
-    len = _printf("%d\n", NULL);
-    len2 = _printf("%d\n", NULL);
+    len = _printf("%d\n",NULL);
+    len2 = _printf("%d\n",NULL);
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
 
-    len = _printf("%d\n", "");
-    len2 = _printf("%d\n", "");
+    len = _printf("%d\n","");
+    len2 = _printf("%d\n","");
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
 
@@ -60,5 +59,5 @@ int m_ain(void)
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
 
-    return (0);
+   return (0);
 }

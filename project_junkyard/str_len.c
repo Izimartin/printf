@@ -2,7 +2,6 @@
 
 /**
  * str_len - A function that returns the length of a string
- * Authors: Martins Akhivbareme & Bolatito Alaba
  *@s: string
  * Return: always 0
  */

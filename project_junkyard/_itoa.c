@@ -2,7 +2,6 @@
 
 /**
  * itoa_buff - Function converts an integer to a string.
- * Authors: Martins Akhivbareme & Bolatito Alaba
  * @value: character
  * @buff: buffer pointer
  * @base: integer base
