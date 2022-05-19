@@ -1,10 +1,9 @@
 #include "holberton.h"
 /**
- * Authors: Martins Akhivbareme & Bolatito Alaba
  * _printf - A printf clone
  * @format: const pointer to a char - % include formats
  * Return: number of characters printed.
- */
+*/
 int _printf(const char *format, ...)
 {
 	int i = 0, *count, *count3;
@@ -29,7 +28,7 @@ int _printf(const char *format, ...)
 			{
 				count3 = print_formats(i, copyfmt, args);
 				if (count3[1] == -1)
-					return (-1);
+				return (-1);
 				count[1] += count3[1];
 				i += count3[0];
 			}
@@ -41,5 +40,5 @@ int _printf(const char *format, ...)
 		}
 		va_end(args);
 	}
-	return (count[1]);
+return (count[1]);
 }

@@ -1,7 +1,6 @@
 #include <unistd.h>
 #include "holberton.h"
 /**
- * Authors: Martins Akhivbareme & Bolatito Alaba
  * _printarg - writes the character c to stdout
  * @c: The character to print
  *

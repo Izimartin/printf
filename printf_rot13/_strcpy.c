@@ -1,11 +1,10 @@
 #include "holberton.h"
 /**
- * Authors: Martins Akhivbareme & Bolatito Alaba
- * _strcpy - copies the string pointed to
- * @dest: destination array
- * @src: input string
- * Return: string
- **/
+* _strcpy - copies the string pointed to
+* @dest: destination array
+* @src: input string
+* Return: string
+**/
 char *_strcpy(char *dest, const char *src)
 {
 	int i = 0, length = 0;
@@ -19,7 +18,7 @@ char *_strcpy(char *dest, const char *src)
 	{
 		dest[i] = src[i];
 	}
-	for (; i <= length; i++)
+	for ( ; i <= length; i++)
 	{
 		dest[i] = '\0';
 	}

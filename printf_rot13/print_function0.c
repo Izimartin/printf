@@ -1,10 +1,9 @@
 #include "holberton.h"
 /**
  * p_char - prints char
- * Authors: Martins Akhivbareme & Bolatito Alaba
  * @args: va_list
  * Return: number of characters printed
- */
+*/
 int p_char(va_list args)
 {
 	char ch[2];
@@ -13,30 +12,30 @@ int p_char(va_list args)
 	ch[1] = '\0';
 	ch[0] = va_arg(args, int);
 	i = _putchar(ch);
-	return (i);
+return (i);
 }
 /**
  * p_string - prints string
  * @args: va_list
  * Return: number of characters printed
- */
+*/
 int p_string(va_list args)
 {
 	char *s;
 	int i = 6;
 
-	s = va_arg(args, char *);
+	s = va_arg(args, char*);
 	if (s)
-		i = _printarg(s);
+	i = _printarg(s);
 	else
-		_printarg("(null)");
-	return (i);
+	_printarg("(null)");
+return (i);
 }
 /**
  * p_percent - prints percent symbol
  * @args: va_list
  * Return: number of characters printed
- */
+*/
 int p_percent(va_list args __attribute__((unused)))
 {
 	char *s;
@@ -44,13 +43,13 @@ int p_percent(va_list args __attribute__((unused)))
 
 	s = "%";
 	i = _putchar(s);
-	return (i);
+return (i);
 }
 /**
  * p_int - prints an integer
  * @args: va_list
  * Return: number of characters printed
- */
+*/
 int p_int(va_list args)
 {
 	char *str;
@@ -60,7 +59,7 @@ int p_int(va_list args)
 	unsigned int num2;
 
 	sign = "-";
-	num = va_arg(args, int);
+	num =  va_arg(args, int);
 	num2 = num;
 	if (num < 0)
 	{
@@ -70,5 +69,5 @@ int p_int(va_list args)
 	}
 	str = change_base(num2, 10);
 	i += _printarg(str);
-	return (i);
+return (i);
 }

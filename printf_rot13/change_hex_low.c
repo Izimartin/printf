@@ -1,11 +1,10 @@
 #include "holberton.h"
 /**
- * Authors: Martins Akhivbareme & Bolatito Alaba
- * change_hex_low - changes number base
- * @num: input number
- * @base: base to convert
- * Return: pointer to array - with the number converted
- */
+* change_hex_low - changes number base
+* @num: input number
+* @base: base to convert
+* Return: pointer to array - with the number converted
+*/
 char *change_hex_low(unsigned int num, int base)
 {
 	char symbols[] = "0123456789abcdef";
@@ -14,10 +13,9 @@ char *change_hex_low(unsigned int num, int base)
 
 	ptr = &array[99];
 	*ptr = '\0';
-	do
-	{
+	do {
 		*--ptr = symbols[num % base];
 		num /= base;
 	} while (num != 0);
-	return (ptr);
+return (ptr);
 }

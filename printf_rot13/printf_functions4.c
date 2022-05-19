@@ -1,10 +1,9 @@
 #include "holberton.h"
 /**
  * replace_str - replace no printable characters by \x + hexa value
- * Authors: Martins Akhivbareme & Bolatito Alaba
  * @s: pointer to char
  * Return: pointer to char
- */
+*/
 char *replace_str(char *s)
 {
 	int i = 0;
@@ -17,10 +16,9 @@ char *replace_str(char *s)
 	while (s[i])
 	{
 		if (s[i] < 32)
-		{
-			ptr[j] = 92;
-			ptr[j + 1] = 120;
-			ptr2 = change_base(s[i], 16);
+		{ ptr[j] = 92;
+		ptr[j + 1] = 120;
+		ptr2 = change_base(s[i], 16);
 			if (s[i] < 17)
 			{
 				ptr[j + 2] = 48;
@@ -33,41 +31,41 @@ char *replace_str(char *s)
 			}
 			j += 4;
 		}
-		else
-		{
-			ptr[j] = s[i];
-			j++;
-		}
+			else
+			{
+				ptr[j] = s[i];
+				j++;
+			}
 		i++;
 	}
 	ptr[j] = '\0';
-	return (ptr);
+return (ptr);
 }
 /**
  * p_rot13 - prints percent symbol
  * @args: va_list
  * Return: number of characters printed
- */
+*/
 int p_rot13(va_list args)
 {
 	char *s;
 	char *aux;
 	int i = 6;
 
-	s = va_arg(args, char *);
+	s = va_arg(args, char*);
 	if (s)
 	{
-		aux = rot13(s);
-		i = _printarg(aux);
+	aux = rot13(s);
+	i = _printarg(aux);
 	}
 	else
-		_printarg("(null)");
-	return (i);
+	_printarg("(null)");
+return (i);
 }
 /**
- * rot13 - encodes a string into rot13
- * @str: string
- * Return: string encoded
+  * rot13 - encodes a string into rot13
+  * @str: string
+  * Return: string encoded
  **/
 char *rot13(char *str)
 {
@@ -90,5 +88,5 @@ char *rot13(char *str)
 		}
 	}
 	aux[j] = '\0';
-	return (aux);
+return (aux);
 }

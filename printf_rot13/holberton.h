@@ -5,10 +5,9 @@
 #include <stdio.h>
 /**
  * struct fn - Struct fn
- * Authors: Martins Akhivbareme & Bolatito Alaba
  * @ob: The operator
  * @type: The function associated
- */
+*/
 typedef struct fn
 {
 	char *ob;

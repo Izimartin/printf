@@ -1,7 +1,6 @@
 #include <unistd.h>
 #include <string.h>
 /**
- * Authors: Martins Akhivbareme & Bolatito Alaba
  * _putchar - writes the character c to stdout
  * @c: The character to print
  *

@@ -31,8 +31,8 @@ int main(void)
 
 	b = 98;
 
-	_printf("Martins and Bola colaborating\n");
-	printf("Martins and Bola colaborating\n");
+	_printf("Peter and Michael colaborating\n");
+	printf("Peter and Michael colaborating\n");
 	_printf("--------------\n\n\n");
 	_printf("fasdf\n %s\n %c\n %s\n %s\n %s\n %i\n %b\n\n\n", s, c, s2, s3, s4, i, b);
 	printf("fasdf\n %s\n %c\n %s\n %s\n %s\n %i\n\n\n", s, c, s2, s3, s4, i);
