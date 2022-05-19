@@ -1,79 +1,61 @@
-#ifndef HOLBERTON_H
-#define HOLBERTON_H
+#ifndef _HOLBERTON_H_
+#define _HOLBERTON_H_
 
 #include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
 #include <unistd.h>
-
-#define BUF_SIZE 1024
-#define BUF_FLUSH -1
-
-#define FLAGS_INIT {0, 0, 0, 0, 0}
+#include <stdlib.h>
 
 /**
- * struct flags - flags on / off
- * when used with a printf command
- * @plusf: on if plus_flag specified
- * @spacef: on if hashtag_flag specified
- * @hashtagf: on if _flag specified
- * @hmod: on if h_modifier is specified
- * @lmod: on if l_modifier is specified
+ * struct print - struct for printer functions
+ * @type_arg: identifier
+ * @f: pointer to a printer functions
  *
+ * Description: struct that stores pointers to a
+ * printer functions.
  */
-typedef struct flags
+typedef struct print
 {
-	unsigned int plusf;
-	unsigned int spacef;
-	unsigned int hashtagf;
-	unsigned int hmod;
-	unsigned int lmod;
-} flags_t;
+	char *type_arg;
+	int (*f)(va_list, char *, unsigned int);
+} print_t;
 
-/**
- * struct specifier - Struct
- * @spec: specifier
- * @f: pointer to the function
- */
-typedef struct specifier
-{
-	char spec;
-	int (*f)(va_list ap, flags_t *f);
-} specType;
-
-/* _put.c module */
-int _puts(char *str);
-int _putchar(int c);
-
-/* _prinf.c module */
 int _printf(const char *format, ...);
-
-/* get_print.c module */
-int (*getPrint(char s))(va_list, flags_t *);
-int getFlags(char s, flags_t *f);
-int getModifier(char s, flags_t *f);
-
-/* printAlpha.c module */
-int printStr(va_list ap, flags_t *f);
-int printChar(va_list ap, flags_t *f);
-int printModulo(va_list ap, flags_t *f);
-
-/* printNum.c module */
-int printInt(va_list ap, flags_t *f);
-int printUnsigned(va_list ap, flags_t *f);
-char *convert(unsigned long int num, int base, int lowercase);
-
-/* printBases.c module */
-int printBinary(va_list ap, flags_t *f);
-int printHexL(va_list ap, flags_t *f);
-int printHexU(va_list ap, flags_t *f);
-int printOctal(va_list ap, flags_t *f);
-int printAddr(va_list ap, flags_t *f);
-
-/* printAlpha_2.c module */
-int printReverse(va_list ap, flags_t *f);
-int printRot13(va_list ap, flags_t *f);
-int printS(va_list ap, flags_t *f);
+int print_prg(va_list __attribute__((unused)), char *, unsigned int);
+int print_chr(va_list arguments, char *buf, unsigned int ibuf);
+int print_str(va_list arguments, char *buf, unsigned int ibuf);
+int print_int(va_list arguments, char *buf, unsigned int ibuf);
+int print_bnr(va_list arguments, char *buf, unsigned int ibuf);
+int print_unt(va_list arguments, char *buf, unsigned int ibuf);
+int print_oct(va_list arguments, char *buf, unsigned int ibuf);
+int print_hex(va_list arguments, char *buf, unsigned int ibuf);
+int print_upx(va_list arguments, char *buf, unsigned int ibuf);
+int print_usr(va_list arguments, char *buf, unsigned int ibuf);
+int print_add(va_list arguments, char *buf, unsigned int ibuf);
+int print_rev(va_list arguments, char *buf, unsigned int ibuf);
+int print_rot(va_list arguments, char *buf, unsigned int ibuf);
+int prinlint(va_list arguments, char *buf, unsigned int ibuf);
+int prinlunt(va_list arguments, char *buf, unsigned int ibuf);
+int prinloct(va_list arguments, char *buf, unsigned int ibuf);
+int prinlhex(va_list arguments, char *buf, unsigned int ibuf);
+int prinlupx(va_list arguments, char *buf, unsigned int ibuf);
+int prinhint(va_list arguments, char *buf, unsigned int ibuf);
+int prinhunt(va_list arguments, char *buf, unsigned int ibuf);
+int prinhoct(va_list arguments, char *buf, unsigned int ibuf);
+int prinhhex(va_list arguments, char *buf, unsigned int ibuf);
+int prinhupx(va_list arguments, char *buf, unsigned int ibuf);
+int prinpint(va_list arguments, char *buf, unsigned int ibuf);
+int prinnoct(va_list arguments, char *buf, unsigned int ibuf);
+int prinnhex(va_list arguments, char *buf, unsigned int ibuf);
+int prinnupx(va_list arguments, char *buf, unsigned int ibuf);
+int prinsint(va_list arguments, char *buf, unsigned int ibuf);
+int (*get_print_func(const char *s, int index))(va_list, char *, unsigned int);
+int ev_print_func(const char *s, int index);
+unsigned int handl_buf(char *buf, char c, unsigned int ibuf);
+int print_buf(char *buf, unsigned int nbuf);
+char *fill_binary_array(char *binary, long int int_in, int isneg, int limit);
+char *fill_oct_array(char *bnr, char *oct);
+char *fill_long_oct_array(char *bnr, char *oct);
+char *fill_short_oct_array(char *bnr, char *oct);
+char *fill_hex_array(char *bnr, char *hex, int isupp, int limit);
 
 #endif
