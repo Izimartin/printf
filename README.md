@@ -1,391 +1,92 @@
-# printf()
+# 0x11. C - printf
 
-The printf project is a collaboration project by **Bolatito Alaba** and **Martins Akhivbareme**, students of the ALX Software Engineering Programme by Holberton School, in which a function named "\_printf" imitates the actual "printf" command located in the stdio.h library. It contains some of the basic features and functions found in the manual 3 of "printf".
+- Writing our own `printf` function, this is a project done under [ALX Low Level Programming](https://github.com/Izimartin/alx-low_level_programming). A collaboration project by **Bolatito Alaba** and **Martins Akhivbareme**.
 
-\_printf() is a function that performs formatted output conversion and prints data. Its prototype is the following:
+## Resource
 
-    int _printf(const char *format, ...)
+- [secrets of printf](https://www.cypress.com/file/54761/download)
+- [Implementing printf and scanf in C](https://iq.opengenus.org/how-printf-and-scanf-function-works-in-c-internally/)
+- [All About Printf](https://akshatshibu.wordpress.com/2015/07/22/all-about-printf/)
 
-Where **format** contains the string that is printed. As \_printf() is variadic function, it can receives n arguments that replace by n tags written inside the string.
+## Description
 
-The format tags prototype is the following:
+- The function `_printf` writes output to stdout. The function writes under the control of a `format` string that specifies how subsequent arguments (accessed via the variable-length argument facilities of standard library `stdarg`) are converted for output.
 
-    %[flags][length]specifier
+- Prototype: `int _printf(const char *format, ...);`
 
-If the program runs successfully, the **return value** is the amount of chars printed.
-| Specifier | Output |
-| ------------- | ------------- |
-| c | Character |
-| d or i | Signed decimal integer |
-| s | String of characters |
-| b | Signed binary |
-| o | Signed octal |
-| u | Unsigned integer |
-| x | Unsigned hexadecimal |
-| X | Unsigned hexadecimal (uppercase) |
-| p | Pointer address |
-| r | Reverse string of characters |
-| R | ROT13 translation of string |
-| S | String with special chars replaced by their ASCII value |
-| % | Character |
+## Return
 
-| Flags   | Description                                                                                                    | Specifiers |
-| ------- | -------------------------------------------------------------------------------------------------------------- | ---------- |
-| +       | Prints a plus sign (+) when the argument is a positive number. In other case, prints a minus sign (-).         | i, d       |
-| (space) | Prints a blank space if the argument is a positive number                                                      | i, d       |
-| #       | Prints 0, 0x and 0X for o, x and X specifiers, respectively. It doesn't print anything if the argument is zero | o, x, X    |
+- Upon success, `_printf` returns the number of characters printed (**excluding the terminating null byte used to end output to strings**). If an output error is encountered, the function returns `-1`.
 
-| Length | Description                              | Specifiers          |
-| ------ | ---------------------------------------- | ------------------- |
-| l      | Prints a long int or unsigned long int   | i, d, o, u, x and X |
-| h      | Prints a short int or unsigned short int | i, d, o, u, x and X |
+## Format of the Argument String
 
----
+- The `format` string argument is a constant character string composed of zero or more directives: ordinary characters (apart from `%`) which are copied unchanged to the output stream; and conversion specifications, each of which results in fetching zero or more subsequent arguments.
+- Conversion specification is introduced by the character `%` and ends with a conversion specifier (which in whole make up the format specifier.)
 
-## Examples
+## General Requirements
 
-1. Printing the string of chars "Hello, Holberton":
-   - Use: `_printf("Hello Hol%s.", "berton");`
-   - Output: `Hello Holberton.`
-2. Printing an integer number:
-   - Use: `_printf("10 + 10 is equal to %d.", 20);`
-   - Output: `10 + 10 is equal to 20.`
-3. Printing a binary, octal and hexadecimal:
-   - Use: `_printf("10 in binary is [%b], in octal is [%o] and in hexadecimal is [%x]", 5, 5, 5);`
-   - Output: `10 in binary is [1010], in octal is [12] and in hexadecimal is [A]`
-4. Printing a string codified in ROT13:
-   - Use: `_printf("Hello in ROT13 is %R", "Hello");`
-   - Output: `Hello in ROT13 is Urybb`
+- All your files will be compiled on Ubuntu 20.04 LTS using `gcc`, using the options `-Wall -Werror -Wextra -pedantic -std=gnu89`
+- All your files should end with a new line.
+- No more than 5 functions per file.
+- You are not allowed to use global variables.
+- The prototypes of all your functions should be included in your header file called `holberton.h`
+- All your header files should be include guarded.
 
-Using flags and length tags:
+### Authorized functions and macros
 
-5. Printing the string of chars "Hello, Holberton":
-   - Use: `_printf("2 * 2 = %+d and 5 * -5 = %+i", 4, -25);`
-   - Output: `2 * 2 = +4 and 5 * -5 = -25`
-6. Printing a long integer number and short integer number:
-   - Use: `_printf("1 million as a long int is %ld, but as a short int is %hd", 1000000, 1000000);`
-   - Output: `1 million as a long int is 1000000, but as a short int is 16960`
+- `write` (`man 2 write`)
+- `malloc` (`man 3 malloc`)
+- `free` (`man 3 free`)
+- `va_start` (`man 3 va_start`)
+- `va_end` (`man 3 va_end`)
+- `va_copy` (`man 3 va_copy`)
+- `va_arg` (`man 3 va_arg`)
 
----
+### Github
 
-## File Functions
+- There should be one project repository per group. If you clone/fork/whatever a project repository with the same name before the second deadline, you risk a 0% score.
 
-### \_printf.c
+### Compilation
 
-Own Printf Function That Performs Formatted Output Conversion And Print Data.
+- The code can be compiled like this:
+  ```sh
+  gcc -Wall -Werror -Wextra -pedantic -std=gnu89 test/main.c *.c -o print
+  ```
+- All test files will be in the [test](./test) directory.
 
----
-
-### main.h
-
-Header File Where All Prototypes Are Saved.
-
----
-
-### get_print_func.c
-
-Pointer To A Function That Selects The Correct Function To Perform The Operation.
-
----
-
-### print_buf.c
-
-Function That Prints The Buffer.
-
----
-
-### handl_buf.c
-
-Function That Concatenates The Buffer Characters.
-
----
-
-### print_chr.c
-
-Function That Writes The Character C To Stdout.
-
-```c
-/* Indetifier : %c */
-```
-
----
-
-### print_str.c
-
-Function That Writes The String To Stdout.
-
-```c
-/* Indetifier : %s */
-```
-
----
-
-### print_int.c
-
-Function That Prints An Integer.
-
-```c
-/* Indetifier : %i or %d */
-```
-
----
-
-### print_bnr.c
-
-Function That Prints Decimal In Binary.
-
-```c
-/* Indetifier : %b */
-```
-
----
-
-### print_oct.c
-
-Function That Prints Decimal In Octal.
-
-```c
-/* Indetifier : %o */
-```
-
----
-
-### print_hex.c
-
-Function That Prints Decimal In Hexadecimal.
-
-```c
-/* Indetifier : %x */
-```
-
----
-
-### print_upx.c
-
-Function That Prints Decimal In Uppercase Hexadecimal.
-
-```c
-/* Indetifier : %X */
-```
-
----
-
-### print_usr.c
-
-Function That Prints A String And Values Of Non-Printed Chars.
-
-```c
-/* Indetifier : %S */
-```
-
----
-
-### print_unt.c
-
-Function That Prints An Unsigned Integer.
-
-```c
-/* Indetifier : %u */
-```
-
----
-
-### print_rev.c
-
-Function That Writes The String To Stdout In Reverse.
-
-```c
-/* Indetifier : %r */
-```
-
----
-
-### print_rot.c
-
-Function That Writes The String To Stdout In Rot13.
-
-```c
-/* Indetifier : %R */
-```
-
----
-
-### print_add.c
-
-Function That Prints The Address Of An Input Variable.
-
-```c
-/* Indetifier : %p */
-```
-
----
-
-### print_long_oct.c
-
-Function That Prints Long Decimal Number In Octal.
-
-```c
-/* Indetifier : %lo */
-```
-
----
-
-### print_long_hex.c
-
-Function That Prints Long Decimal Number In Hexadecimal.
-
-```c
-/* Indetifier : %lx */
-```
-
----
-
-### print_long_int.c
-
-Function That Prints A Long Integer.
-
-```c
-/* Indetifier : %li */
-```
-
----
-
-### print_long_upx.c
-
-Function That Prints A Long Decimal In Uppercase Hexadecimal.
-
-```c
-/* Indetifier : %lX */
-```
-
----
-
-### print_long_unt.c
-
-Function That Prints A Long Unsigned Integer.
-
-```c
-/* Indetifier : %lu */
-```
-
----
-
-### print_short_oct.c
-
-Function That Prints Short Decimal Number In Octal.
-
-```c
-/* Indetifier : %ho */
-```
-
----
-
-### print_short_hex.c
-
-Function That Prints Short Decimal Number In Hexadecimal.
-
-```c
-/* Indetifier : %hx */
-```
-
----
-
-### print_short_int.c
-
-Function That Prints A Short Integer.
-
-```c
-/* Indetifier : %hi */
-```
-
----
-
-### print_short_upx.c
-
-Function That Prints A Short Decimal In Uppercase Hexadecimal.
-
-```c
-/* Indetifier : %hX */
-```
-
----
-
-### print_short_unt.c
-
-Function That Prints A Short Unsigned Integer.
-
-```c
-/* Indetifier : %hu */
-```
-
----
-
-### print_num_hex.c
-
-Function That Print A Number In Hexadecimal Begining With 0 And x.
-
-```c
-/* Indetifier : %#x */
-```
-
----
-
-### print_num_oct.c
-
-Function That Prints A Number In Octal Begining With 0 And o.
-
-```c
-/* Indetifier : %#o */
-```
-
----
-
-### print_num_upx.c
-
-Function That Prints A Number In Uppercase Hexadecimal.
-
-```c
-/* Indetifier : %#X */
-```
-
----
-
-### print_plus_int.c
-
-Function That Prints An Integer With Plus Symbol.
-
-```c
-/* Indetifier : %+i */
-```
-
----
-
-### print_space_int.c
-
-Function That Prints An Integer Begining With 0 And u.
-
-```c
-/* Indetifier : % i */
-```
-
----
-
-### ev_print_func.c
-
-Function That Returns The Amount Of Indetifiers.
-
----
-
-### CONTRIBUTION.md
-
-Documentation stating the styleguide on how the work flow was carried out.
-
----
-
-## Authors
+### Authors
 
 - `Bolatito Alaba` <beenjewel@gmail.com>
-- `Martins Akhivbareme` <izimartinz@gmail.com>
+- `Martins Akhivbareme` <izimartinz@gmail.com> [@Izimartin](https://github.com/Izimartin) 👨‍💻
+
+## Tasks
+
+0. **I'm not going anywhere. You can print that wherever you want to. I'm here and I'm a Spur for life** : A function that produces output according to a format.
+
+   - Prototype: int `_printf(const char *format, ...);`
+   - Returns: the number of characters printed (excluding the null byte used to end output to strings)
+   - write output to stdout, the standard output stream
+   - `format` is a character string. The format string is composed of zero or more directives. See `man 3 printf` for more detail. You need to handle the following conversion specifiers:
+     - `c`
+     - `s`
+     - `%`
+   - You don’t have to reproduce the buffer handling of the C library `printf` function.
+   - You don’t have to handle the flag characters.
+   - You don’t have to handle field width.
+   - You don’t have to handle precision.
+   - You don’t have to handle the length modifiers.
+
+1. **Education is when you read the fine print. Experience is what you get if you don't** : Handle the following conversion specifiers:
+
+   - `d`
+   - `i`
+   - You don’t have to handle the flag characters.
+   - You don’t have to handle field width.
+   - You don’t have to handle precision.
+   - You don’t have to handle the length modifiers.
+
+2. **Just because it's in print doesn't mean it's the gospel** : Create a man page for your function.
+   - How to read the man page: `man ./man_3_printf`
 
 ---
 
