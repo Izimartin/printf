@@ -1,11 +1,13 @@
 #include "main.h"
 
+/* Code Credit : Martins Akhivbareme & Bolatito Alaba */
 /**
  * _printf - prints anything
  * @format: the format string
  *
  * Return: number of bytes printed
  */
+/* Code Credit : Martins Akhivbareme & Bolatito Alaba */
 int _printf(const char *format, ...)
 {
 	int sum = 0;
@@ -39,7 +41,7 @@ int _printf(const char *format, ...)
 			p++;
 		if (!get_specifier(p))
 			sum += print_from_to(start, p,
-				params.l_modifier || params.h_modifier ? p - 1 : 0);
+								 params.l_modifier || params.h_modifier ? p - 1 : 0);
 		else
 			sum += get_print_func(p, ap, &params);
 	}
@@ -47,3 +49,4 @@ int _printf(const char *format, ...)
 	va_end(ap);
 	return (sum);
 }
+/* Code Credit : Martins Akhivbareme & Bolatito Alaba */
