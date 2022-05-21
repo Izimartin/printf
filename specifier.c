@@ -23,8 +23,7 @@ int (*get_specifier(char *s))(va_list ap, params_t *params)
 		{"S", print_S},
 		{"r", print_rev},
 		{"R", print_rot13},
-		{NULL, NULL}
-	};
+		{NULL, NULL}};
 	int i = 0;
 
 	while (specifiers[i].specifier)
@@ -68,21 +67,21 @@ int get_flag(char *s, params_t *params)
 
 	switch (*s)
 	{
-		case '+':
-			i = params->plus_flag = 1;
-			break;
-		case ' ':
-			i = params->space_flag = 1;
-			break;
-		case '#':
-			i = params->hashtag_flag = 1;
-			break;
-		case '-':
-			i = params->minus_flag = 1;
-			break;
-		case '0':
-			i = params->zero_flag = 1;
-			break;
+	case '+':
+		i = params->plus_flag = 1;
+		break;
+	case ' ':
+		i = params->space_flag = 1;
+		break;
+	case '#':
+		i = params->hashtag_flag = 1;
+		break;
+	case '-':
+		i = params->minus_flag = 1;
+		break;
+	case '0':
+		i = params->zero_flag = 1;
+		break;
 	}
 	return (i);
 }
@@ -135,4 +134,4 @@ char *get_width(char *s, params_t *params, va_list ap)
 	}
 	params->width = d;
 	return (s);
-}	
+}
