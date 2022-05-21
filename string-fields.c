@@ -1,7 +1,6 @@
 #include "main.h"
 
 /* Code Credit : Martins Akhivbareme & Bolatito Alaba */
-
 /**
  * get_precision - gets the precision from the format string
  * @p: the format string
@@ -30,5 +29,4 @@ char *get_precision(char *p, params_t *params, va_list ap)
 	params->precision = d;
 	return (p);
 }
-
 /* Code Credit : Martins Akhivbareme & Bolatito Alaba */
